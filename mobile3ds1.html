@@ -2,18 +2,6 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title></title>
-        <style>
-            body {
-                margin: 0;
-            }
-            iframe {
-                display: block;       /* iframes are inline by default */
-                border: none;         /* Reset default border */
-                height: 100vh;        /* Viewport-relative units */
-                width: 100vw;
-            }
-        </style>
         <script>
             window.onload = function() {
                 // get url params
@@ -24,11 +12,14 @@
                 const termUrl = urlParams.get('termUrl');
 
                 // build form html
-                var html = '<form method="post" enctype="application/x-www-form-urlencoded" action="' + acsUrl + '">'
+                var html = '<div style="text-align:center; margin-top:150px; font-family:sans-serif;">'
+                    + '<p style="font-size:14pt; font-weight:400; color:#565960;">Authorize payment...</p>'
+                    + '<button onclick="document.getElementById(\'myform\').submit()" style="font-size:12pt; background:#565960; color:#fff; border:none; padding:0.2em 1em;">Continue</button>'
+                    + '</div>'
+                    + '<form id="myform" method="post" enctype="application/x-www-form-urlencoded" action="' + acsUrl + '">'
                     + '<input type="hidden" name="PaReq" value="' + paReq + '"/>'
                     + '<input type="hidden" name="MD" value="' + md + '"/>'
                     + '<input type="hidden" name="TermUrl" value="' + termUrl + '"/>'
-                    + '<input type="submit" name="submit" value="Continue"/>'
                     + '</form>';
 
                 // add form to iframe
@@ -51,7 +42,7 @@
             window.addEventListener("message", handle3DSResponse, false);
         </script>
     </head>
-    <body>
-        <iframe id="iframe"></iframe>
+    <body style="margin: 0;">
+        <iframe id="iframe" style="display:block; border:none; width:100vh; height:100vh;"></iframe>
     </body>
 </html>
