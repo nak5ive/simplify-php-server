@@ -13,14 +13,15 @@
                 const termUrl = urlParams.get('termUrl');
 
                 // build form html
-                var html = '<html><body>'
+                var html = '<div style="text-align:center; margin-top:150px; font-family:sans-serif;">'
+                    + '<p style="font-size:14pt; font-weight:400; color:#565960;">Authorize payment...</p>'
+                    + '<button onclick="document.getElementById(\'myform\').submit()" style="font-size:12pt; background:#565960; color:#fff; border:none; padding:0.2em 1em;">Continue</button>'
+                    + '</div>'
                     + '<form id="myform" method="post" enctype="application/x-www-form-urlencoded" action="' + acsUrl + '">'
                     + '<input type="hidden" name="PaReq" value="' + paReq + '"/>'
                     + '<input type="hidden" name="MD" value="' + md + '"/>'
                     + '<input type="hidden" name="TermUrl" value="' + termUrl + '"/>'
-                    + '</form>'
-                    + '<script>document.getElementById(\'myform\').submit()</script>'
-                    + '</body></html>';
+                    + '</form>';
 
                 // add form to iframe
                 var iframe = document.getElementById('iframe');
